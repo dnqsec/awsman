@@ -4,9 +4,13 @@ import os
 import boto3
 from botocore.exceptions import ClientError
 
-instance_id = ''
+instance_id = 'YOUR-INSTANCE-ID'
 action = ''
-if len(sys.argv) == 2:
+if len(sys.argv) >= 3:
+    action = sys.argv[1].upper()
+    instance_id = sys.argv[2].upper()
+    
+elif len(sys.argv) >= 2:
     action = sys.argv[1].upper()
 
 ec2 = boto3.client('ec2')
